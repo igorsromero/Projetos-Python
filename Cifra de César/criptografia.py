@@ -4,13 +4,16 @@ import string
 def criptografar(frase):
     try:
         for i in range(26):
-            for j in range(26):
-                if frase[i].upper() == alfabeto[j]:
-                    if j+3 > 25:
-                        j = j-23
-                        newfrase.append(alfabeto[j])
-                    else:
-                        newfrase.append(alfabeto[j+3])
+            if frase[i].upper() == ' ':
+                newfrase.append(' ')
+            else:
+                for j in range(26):
+                    if frase[i].upper() == alfabeto[j]:
+                        if j+3 > 25:
+                            j = j-23
+                            newfrase.append(alfabeto[j])
+                        else:
+                            newfrase.append(alfabeto[j+3])
     except IndexError:
         pass
     print(''.join(newfrase))
@@ -19,13 +22,18 @@ def criptografar(frase):
 def descriptografar(frase):
     try:
         for i in range(26):
-            for j in range(26):
-                if frase[i].upper() == alfabeto[j]:
-                    if j-3 < 0:
-                        j = j+23
-                        newfrase.append(alfabeto[j])
-                    else:
-                        newfrase.append(alfabeto[j-3])
+            if frase[i].upper() == ' ':
+                newfrase.append(' ')
+            else:
+                for j in range(26):
+                    if frase[i].upper() == alfabeto[j]:
+                        if j-3 < 0:
+                            j = j+23
+                            newfrase.append(alfabeto[j])
+                        else:
+                            newfrase.append(alfabeto[j-3])
+                    elif frase[i].upper() == ' ':
+                        newfrase.append(' ')
     except IndexError:
         pass
     print(''.join(newfrase))
